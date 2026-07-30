@@ -99,3 +99,23 @@ The Forge development dedicated server successfully:
 - Saved the Overworld, Nether, and End successfully
 - Clean dedicated-server shutdown verified
 - Gradle reported exit code 143 because the child process received SIGTERM
+
+## Dragon Gameplay Validation
+
+Status: PASSED
+
+Manual testing in a disposable development world confirmed:
+
+- A dragon egg could be placed and hatched
+- A fully grown dragon could be tamed using raw fish
+- The dragon interaction hitbox functioned at the center of its body
+- A saddle could be equipped
+- The player could mount the dragon
+- Mounted ground movement worked
+- Flight and takeoff worked
+- Landing worked
+- Dismounting worked
+- The world saved normally
+- The dragon persisted after saving and reloading
+
+The active Avatar world was not used during development testing.
