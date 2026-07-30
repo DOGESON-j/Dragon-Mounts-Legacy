@@ -94,5 +94,5 @@ The Forge development dedicated server successfully:
 - Generated and loaded a dedicated-server world
 - Reached the ready state
 - Remained stable through an automatic world save
-- Shut down through the server `stop` command
-- Saved all loaded dimensions successfully
+- Was terminated with Control+C because Gradle did not forward console input
+- Clean dedicated-server shutdown remains unverified
