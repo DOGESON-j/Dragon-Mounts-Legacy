@@ -5,6 +5,7 @@ import com.github.kay9.dragonmounts.data.loot.conditions.RandomChanceByConfig;
 import com.github.kay9.dragonmounts.dragon.DragonBreed;
 import com.github.kay9.dragonmounts.dragon.DragonSpawnEgg;
 import com.github.kay9.dragonmounts.dragon.TameableDragon;
+import com.github.kay9.dragonmounts.dragon.experimental.PlaceholderDragon;
 import com.github.kay9.dragonmounts.dragon.abilities.*;
 import com.github.kay9.dragonmounts.dragon.egg.HatchableEggBlock;
 import com.github.kay9.dragonmounts.dragon.egg.HatchableEggBlockEntity;
@@ -55,6 +56,26 @@ public class DMLRegistry
     public static final RegistryObject<SoundEvent> GHOST_DRAGON_AMBIENT = sound("entity.dragon.ambient.ghost");
 
     public static final RegistryObject<EntityType<TameableDragon>> DRAGON = register("dragon", Registries.ENTITY_TYPE, () -> EntityType.Builder.of(TameableDragon::new, MobCategory.CREATURE).sized(TameableDragon.BASE_WIDTH, TameableDragon.BASE_HEIGHT).eyeHeight(3.375f).clientTrackingRange(10).updateInterval(3).build(DragonMountsLegacy.MOD_ID + ":dragon"));
+
+    public static final RegistryObject<EntityType<PlaceholderDragon>> PLACEHOLDER_DRAGON = register(
+            "placeholder_dragon",
+            Registries.ENTITY_TYPE,
+            () -> EntityType.Builder.of(
+                            PlaceholderDragon::new,
+                            MobCategory.CREATURE
+                    )
+                    .sized(
+                            TameableDragon.BASE_WIDTH,
+                            TameableDragon.BASE_HEIGHT
+                    )
+                    .eyeHeight(3.375f)
+                    .clientTrackingRange(10)
+                    .updateInterval(3)
+                    .build(
+                            DragonMountsLegacy.MOD_ID
+                                    + ":placeholder_dragon"
+                    )
+    );
 
     public static final RegistryObject<BlockEntityType<HatchableEggBlockEntity>> EGG_BLOCK_ENTITY = register("dragon_egg", Registries.BLOCK_ENTITY_TYPE, () -> BlockEntityType.Builder.of(HatchableEggBlockEntity::new, EGG_BLOCK.get()).build(null));
 

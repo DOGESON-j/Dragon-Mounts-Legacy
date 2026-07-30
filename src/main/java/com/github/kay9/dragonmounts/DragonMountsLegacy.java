@@ -1,5 +1,8 @@
 package com.github.kay9.dragonmounts;
 
+import com.github.kay9.dragonmounts.client.PlaceholderDragonModel;
+import com.github.kay9.dragonmounts.client.PlaceholderDragonRenderer;
+
 import com.github.kay9.dragonmounts.client.*;
 import com.github.kay9.dragonmounts.data.CrossBreedingManager;
 import com.github.kay9.dragonmounts.data.model.DragonModelPropertiesListener;
@@ -69,6 +72,8 @@ public class DragonMountsLegacy
     {
         EntityRenderers.register(DMLRegistry.DRAGON.get(), DragonRenderer::new);
         ForgeHooksClient.registerLayerDefinition(DragonRenderer.MODEL_LOCATION, () -> DragonModel.createBodyLayer(DragonModel.Properties.STANDARD));
+        EntityRenderers.register(DMLRegistry.PLACEHOLDER_DRAGON.get(), PlaceholderDragonRenderer::new);
+        ForgeHooksClient.registerLayerDefinition(PlaceholderDragonRenderer.MODEL_LOCATION, PlaceholderDragonModel::createBodyLayer);
     }
 
     static void registerEggModelLoader(BiConsumer<String, IGeometryLoader<DragonEggModel>> registrar)
@@ -114,6 +119,7 @@ public class DragonMountsLegacy
     static void registerEntityAttributes(BiConsumer<EntityType<? extends LivingEntity>, AttributeSupplier> registrar)
     {
         registrar.accept(DMLRegistry.DRAGON.get(), TameableDragon.createAttributes().build());
+        registrar.accept(DMLRegistry.PLACEHOLDER_DRAGON.get(), TameableDragon.createAttributes().build());
     }
 
     static void registerEntityDataSerializers()
