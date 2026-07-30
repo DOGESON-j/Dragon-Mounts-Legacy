@@ -82,3 +82,17 @@ The development client successfully:
 The initial world-selection crash was caused by the bundled example breed
 referencing an unregistered custom sound event. Pointing the example breed to
 the registered Dragon Mounts ambient sound resolved the failure.
+
+## Dedicated Server Runtime Validation
+
+Status: PASSED
+
+The Forge development dedicated server successfully:
+
+- Started using Java 21
+- Loaded Minecraft 1.21, Forge 51.0.33, Dragon Mounts, and the example addon
+- Generated and loaded a dedicated-server world
+- Reached the ready state
+- Remained stable through an automatic world save
+- Shut down through the server `stop` command
+- Saved all loaded dimensions successfully
