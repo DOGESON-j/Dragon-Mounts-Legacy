@@ -55,7 +55,27 @@ public class DragonSpawnEgg extends ForgeSpawnEggItem
         // ensure a breed exists for this egg. if not, assign a random one.
         // possible cause is through commands, or other unnatural means.
         // todo: find a better way
-        RegistryAccess reg = DistExecutor.safeRunForDist(() -> Minecraft.getInstance().level::registryAccess, () -> ServerLifecycleHooks.getCurrentServer()::registryAccess);
+        MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+        RegistryAccess reg;
+
+        if (server != null)
+        {
+            reg = server.registryAccess();
+        }
+        else
+        {
+            reg = DistExecutor.safeRunForDist(
+                    () -> () -> Minecraft.getInstance().level == null
+                            ? null
+                            : Minecraft.getInstance().level.registryAccess(),
+                    () -> () -> null
+            );
+        }
+
+        // Item stacks can be decoded before a client level exists during login.
+        // Defer verification instead of invalidating the player's inventory.
+        if (reg == null) return;
+
         RegistryOps<Tag> ops = reg.createSerializationContext(NbtOps.INSTANCE);
         Holder<DragonBreed> breed = stack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY)
                 .read(ops, DragonBreed.CODEC.fieldOf(TameableDragon.NBT_BREED))
