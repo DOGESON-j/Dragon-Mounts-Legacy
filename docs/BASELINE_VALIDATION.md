@@ -35,3 +35,33 @@ No source changes were present during this test.
 This is an upstream build-environment/repository-resolution failure on macOS
 Apple Silicon. It is not currently evidence of a Dragon Mounts Java source
 compilation failure.
+
+## Build Environment Remediation
+
+A minimal repository configuration was added to `build.gradle`:
+
+    maven {
+        name = "Mojang libraries"
+        url = "https://libraries.minecraft.net/"
+    }
+
+This allowed Gradle to resolve:
+
+    org.lwjgl:lwjgl-freetype:3.3.3:natives-macos-patch
+
+## Remediated Build Result
+
+Status: PASSED
+
+Command:
+
+    ./gradlew clean build --no-daemon --refresh-dependencies
+
+Result:
+
+    BUILD SUCCESSFUL in 2m 14s
+    8 actionable tasks: 8 executed
+
+The project successfully completed Java compilation and artifact generation.
+No gameplay, entity, rendering, AI, world-generation, or dragon behavior code
+was modified.
