@@ -94,5 +94,8 @@ The Forge development dedicated server successfully:
 - Generated and loaded a dedicated-server world
 - Reached the ready state
 - Remained stable through an automatic world save
-- Was terminated with Control+C because Gradle did not forward console input
-- Clean dedicated-server shutdown remains unverified
+- Was terminated with SIGTERM because Gradle did not forward console input
+- Entered Minecraft's normal shutdown sequence
+- Saved the Overworld, Nether, and End successfully
+- Clean dedicated-server shutdown verified
+- Gradle reported exit code 143 because the child process received SIGTERM
