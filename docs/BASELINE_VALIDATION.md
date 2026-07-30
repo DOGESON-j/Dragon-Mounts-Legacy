@@ -65,3 +65,20 @@ Result:
 The project successfully completed Java compilation and artifact generation.
 No gameplay, entity, rendering, AI, world-generation, or dragon behavior code
 was modified.
+
+## Client Runtime Validation
+
+Status: PASSED
+
+The development client successfully:
+
+- Started with Java 21
+- Reached the main menu
+- Opened the world-selection screen
+- Created and loaded a disposable test world
+- Connected the player to the integrated Forge server
+- Saved the Overworld, Nether, and End successfully
+
+The initial world-selection crash was caused by the bundled example breed
+referencing an unregistered custom sound event. Pointing the example breed to
+the registered Dragon Mounts ambient sound resolved the failure.

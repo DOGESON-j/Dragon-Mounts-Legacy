@@ -50,7 +50,7 @@
     "minecraft:dragon_breath",
     "minecraft:magic"
   ],
-  "ambient_sound": "example_addon:entity.dragon.ambient.example",
+  "ambient_sound": "dragonmounts:entity.dragon.ambient",
   "death_loot": "minecraft:chests/bastion_treasure",
   "growth_time": 120,
   "hatch_chance": 1.0,
